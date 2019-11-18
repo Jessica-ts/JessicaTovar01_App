@@ -1,0 +1,209 @@
+body
+{
+	background: #ee9ca7;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #ffdde1, #ee9ca7);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #ffdde1, #ee9ca7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	margin: 0;
+}
+
+.imageFile
+{
+	width: 100px; 
+	height: 150px;
+	margin-bottom: 5px;
+}
+
+.nombre
+{
+	margin-top: 100px;
+	text-align: center;
+
+}
+
+.form-group-c
+{
+	margin-top: 10px;
+	width: 300px;
+	margin-bottom: 5px;
+}
+
+.container1 {
+    width:900px;
+    margin:25px auto 0;
+    display:flex;
+}
+.container1 .box {
+    position:relative;
+    width: 300px;
+    height:100px;
+    box-sizing:border-box;
+    text-align:center;
+    margin:0 10px;
+    background:#00171d;
+    overflow:hidden;
+    border-radius:4px;
+    box-shadow:0 0 0 2px rgba(0,7,10,1);
+}
+.container1 .box .icon {
+    width:100%;
+    height:100%;
+    background:#00171d;
+    transition: 0.5s;
+}
+.container1 .box .icon .fa {
+    font-size: 4em;
+    line-height:100px;
+    color: #0ff;
+}
+.container1 .box:hover .icon {
+    transform:scale(0);
+}
+.container1 .box .details {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#03a9f4;
+    transition:0.5s;
+    transform:scale(2);
+    opacity:0;
+}
+.container1 .box:hover .details {
+    transform:scale(1);
+    opacity:1;
+}
+.container .box .details h3 {
+    margin:0;
+    padding:0;
+    line-height:100px;
+    font-size:24px;
+    color:#fff;
+}
+.container1 .box .details:nth-child(2) .details {
+    background:#e91e63;
+    padding: auto;
+}
+.container1 .box .details:nth-child(2) .details {
+    background:#607d8b;
+}
+
+.about
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+}
+
+#about
+{
+	text-align: center;
+	color: darkcyan;
+}
+
+.titulo
+{
+	height: 500px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: sans-serif;
+}
+
+.search-field
+{
+	height: 50px;
+	width: 600px;
+	justify-content: center;
+	display: flex; 
+	padding: 10px;
+	border: none;
+	border-radius: 25px;
+	outline: none;
+}
+
+.pos
+{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.find-book
+{
+	color: #fff;
+	margin-bottom: 30px;
+	font-size: 45px ;
+	letter-spacing: 2px;
+	text-align: center;
+}
+
+.search-btn
+{
+	height: 50px;
+	width: 150px;
+	background: darkcyan;
+	border: none;
+	color: white;
+	border-radius: 25px;
+}
+
+.search-btn:hover
+{
+	background: darkslategray;
+	cursor: pointer;
+}
+
+.logo
+{
+	width: 30%;
+}
+
+.separa
+{
+	padding-bottom: 2px;
+	border-bottom: 5px solid black;
+}
+
+.lista
+{
+	margin-bottom: 20px;
+}
+
+.btnDelete
+{
+	display: block;
+	color: white;
+	background: darkcyan;
+	margin-bottom: 10px;
+}
+
+.btnDelete:hover
+{
+	background: darkslategray;
+	cursor: pointer;
+}
+
+footer
+{
+	position: fixed;
+	align-content: center;
+	padding-left: 15%;
+  	bottom: 0;
+}
+
+.text
+{
+	justify-content: center;
+	text-align: center;
+}
+
+.letra 
+{
+	color:#20639B;
+}
+
+p
+{
+	justify-content: left;
+}

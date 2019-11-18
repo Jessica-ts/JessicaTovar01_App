@@ -1,0 +1,14 @@
+{{#if user}}
+<div class= "titulo">
+	<form action="/buscar" method="POST">
+		<h1 class="find-book"> Find a Book </h1>
+		<div class="form-box">
+		<p> <input type="text" name="title" class="search-field" placeholder="Search a book..." autofocus> </p>
+		<div class="pos">
+			<a href="/books/search-books" class="btn btn-success"> Search </a>
+			<!--<button class="search-btn" type="button"> Search </button> -->
+		</div>
+	</form>
+</div>
+{{/if}}
+	

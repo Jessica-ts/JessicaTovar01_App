@@ -13,6 +13,7 @@ const bodyParser = require('body-parser');
 const app = express();
 require('./database');
 require('./config/passport');
+require('./views/Layouts/main.hbs');
 
 // Settings
 //exports.DATABASE_URL = process.env.DATABASE_URL || "mongodb://localhost/Kassandra-blog-post";

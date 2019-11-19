@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 const app = express();
 require('./database');
 require('./config/passport');
-require('./views/Layouts/main.hbs');
+//require('./views/Layouts/main.hbs');
 
 // Settings
 //exports.DATABASE_URL = process.env.DATABASE_URL || "mongodb://localhost/Kassandra-blog-post";
@@ -25,7 +25,7 @@ const port = process.env.PORT || 8080;
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', exphbs({
 	defaultLayout: 'main', 
-	layoutsDir: path.join(app.get('views'), 'layouts'),
+	layoutsDir: path.join(app.get('views'), 'Layouts'),
 	//partialsDir: path.join(app.get('views'), 'partials'),
 	extname: '.hbs'
 }));

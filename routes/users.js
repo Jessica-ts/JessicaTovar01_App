@@ -15,8 +15,8 @@ router.get('/about', isAuthenticated, (req, res) => {
 	res.render('about');
 });
 
-router.get('/users/signin', (req, res) => {
-	res.render('users/signin');
+router.get('/Users/signin', (req, res) => {
+	res.render('Users/signin');
 });
 
 router.post('/users/signin', passport.authenticate('local', {

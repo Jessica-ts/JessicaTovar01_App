@@ -123,14 +123,12 @@ router.put('/books/edit-books/:id', isAuthenticated, async (req,res) =>
 {
 	const {title, author, description, price, store, filename} = req.body;
 
-
-	const image=req.params.id;
 	
-	if(image!="")
+	if(filename!="")
 	{
-		await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store, image});
+		await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store, filename});
 	}
-	await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store, filename});
+	await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store});
 	req.flash('success_msg', 'Note Update successfuly');
 	res.redirect('/books');
 });

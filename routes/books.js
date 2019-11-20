@@ -121,11 +121,23 @@ router.get('/books/edit/:id',isAuthenticated, async (req, res) => {
 
 router.put('/books/edit-books/:id', isAuthenticated, async (req,res) => 
 {
-	const {title, author, description, price, store} = req.body;
+	const {title, author, description, price, store, filename} = req.body;
 
-	await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store});
+	const flag=0;
+	if (filename==" ")
+		flag=1;
+	else
+		flag=0;
 
+	console.log(flag);
 
+	if(filename==" ")
+		await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store,filename});
+
+	else{
+
+		await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store});
+	}
 
 	
 	req.flash('success_msg', 'Note Update successfuly');

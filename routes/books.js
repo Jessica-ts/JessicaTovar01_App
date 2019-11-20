@@ -18,18 +18,15 @@ const POST_COVERS_PATH = 'uploads/bookCovers'
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, POST_COVERS_PATH)
+      cb(null, POST_COVERS_PATH);
     },
     filename: function (req, file, cb) {
-      const { fieldname, originalname } = file
-      cb(null, `${fieldname}-${Date.now()}.${path.exname(originalname)}`)
+      const { fieldname, originalname } = file;
+      cb(null, `${fieldname}-${Date.now()}.${path.exname(originalname)}`);
     }
   })
 })
 
-app.use(multer({
-    storage: storage
-}).single('image'));
 
 router.get('/books/add', isAuthenticated, (req, res) => 
 {

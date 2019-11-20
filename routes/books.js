@@ -133,7 +133,7 @@ router.get('/books/edit/:id',isAuthenticated, async (req, res) => {
 	res.render('books/edit-books', {book});
 });
 
-router.put('/books/edit-books/:id', isAuthenticated, upload.single('path'), async (req,res) => 
+router.put('/books/edit-books/:id', isAuthenticated, upload.single('filename'), async (req,res) => 
 {
 	const {title, author, description, price, store}= req.body;
 	const {filename} = req.file;

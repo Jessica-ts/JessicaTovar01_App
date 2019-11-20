@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs-extra');
 const router = express.Router();
-
+const multer = require ('multer');
 const {randomNumber} = require('../helpers/libs');
 
 const Book = require('../models/Book');
@@ -12,6 +12,20 @@ const Comment = require('../models/Comment');
 
 const {isAuthenticated} = require('../helpers/auth');
 
+
+const POST_COVERS_PATH = 'uploads/bookCovers'
+
+export const upload = multer({
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, POST_COVERS_PATH)
+    },
+    filename: function (req, file, cb) {
+      const { fieldname, originalname } = file
+      cb(null, `${fieldname}-${Date.now()}.${path.exname(originalname)}`)
+    }
+  })
+})
 
 router.get('/books/add', isAuthenticated, (req, res) => 
 {
@@ -119,19 +133,23 @@ router.get('/books/edit/:id',isAuthenticated, async (req, res) => {
 	res.render('books/edit-books', {book});
 });
 
-router.put('/books/edit-books/:id', isAuthenticated, async (req,res) => 
+router.put('/books/edit-books/:id', isAuthenticated, upload.single('path'), async (req,res) => 
 {
 	const {title, author, description, price, store}= req.body;
-	const {filename}= req.file;
-	
-	await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store, filename});
-	
+	const {filename} = req.file;
 
+	try 
+	{
+      await Article.findByIdAndUpdate(req.params.id, { title, author, description, price, store, filename})
+      req.flash('success_msg', 'Note Update successfuly');
+	  res.redirect('/books');
+    }
+    catch (e) 
+    {
+      console.log(e);
+    }
 	
-
 	
-	req.flash('success_msg', 'Note Update successfuly');
-	res.redirect('/books');
 });
 
 router.delete('/books/delete/:id', isAuthenticated, async (req, res) => {

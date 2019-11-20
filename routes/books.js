@@ -123,10 +123,10 @@ router.get('/books/edit/:id',isAuthenticated, async (req, res) => {
 
 router.put('/books/edit-books/:id', isAuthenticated, jsonParser, async (req,res) => 
 {
-	const {title, author, description, price, store}= req.body;
+	const {title, author, description, price, store, filename}= req.body;
 	const{filename}= req.file;
 	
-	if(filename==" ")
+	if(filename)
     	await Book.findByIdAndUpdate(req.params.id, { title, author, description, price, store, filename});
 
     else

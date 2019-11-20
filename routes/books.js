@@ -123,7 +123,8 @@ router.put('/books/edit-books/:id', isAuthenticated, async (req,res) =>
 {
 	const {title, author, description, price, store, filename} = req.body;
 	const imgUrl = randomNumber();
-
+	const ext = path.extname(req.file.originalname).toLowerCase();
+	
 	if(filename==" ")
 		await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store,filename});
 

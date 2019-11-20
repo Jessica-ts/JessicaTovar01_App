@@ -123,41 +123,11 @@ router.put('/books/edit-books/:id', isAuthenticated, async (req,res) =>
 {
 	const {title, author, description, price, store, filename} = req.body;
 
-	
-	if(filename=="")
-	{
+	if(filename==" ")
 		await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store,filename});
-	}
-	
-	else{
-		const imgUrl = randomNumber();
-		
-		const repetir = await Book.find({filename : imgUrl});
-		if(repetir.length > 0)
-		{
-			imgUrl = randomNumber();
-		}
-		const imagebc = req.file.path;
-		const ext = path.extname(req.file.originalname).toLowerCase();
-		const targetPath = path.resolve(`public/uploads/${imgUrl}${ext}`);
-		if(ext === '.png' || ext ==='.jpg' || ext === '.jpeg' || ext === '.gif')
-		{
-		//Rename mueve un archivo de un directorio a otro
-			await fs.rename(imagebc, targetPath);
-			const newBook = new Book({
-			title : req.body.title,
-			author : req.body.author, 
-			description: req.body.description, 
-			price: req.body.price, 
-			store : req.body.store, 
-			filename: imgUrl + ext
-		})
-		newBook.user = req.user.id;
-		await newBook.save();
-		//console.log(newBook);
-		}
-		await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store, filename});
-	}
+
+	else
+		await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store});
 	
 	req.flash('success_msg', 'Note Update successfuly');
 	res.redirect('/books');

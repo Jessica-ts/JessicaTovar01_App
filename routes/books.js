@@ -15,7 +15,7 @@ const {isAuthenticated} = require('../helpers/auth');
 
 const POST_COVERS_PATH = 'uploads/bookCovers'
 
-export const upload = multer({
+const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, POST_COVERS_PATH)

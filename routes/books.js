@@ -123,7 +123,7 @@ router.put('/books/edit-books/:id', isAuthenticated, async (req,res) =>
 {
 	const {title, author, description, price, store, filename} = req.body;
 
-	const flag=0;
+	let flag=0;
 	if (filename==" ")
 		flag=1;
 	else

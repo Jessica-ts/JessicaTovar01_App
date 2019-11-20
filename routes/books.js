@@ -129,7 +129,7 @@ router.put('/books/edit-books/:id', isAuthenticated, async (req,res) =>
 
 	else{
 
-		await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store, (filename: imgUrl + ext) });
+		await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store, filename: imgUrl + ext });
 	}
 
 	

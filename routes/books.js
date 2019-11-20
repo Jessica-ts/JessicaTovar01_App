@@ -27,6 +27,10 @@ const upload = multer({
   })
 })
 
+app.use(multer({
+    storage: storage
+}).single('image'));
+
 router.get('/books/add', isAuthenticated, (req, res) => 
 {
 	res.render('books/new-books.hbs');

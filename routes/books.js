@@ -122,7 +122,7 @@ router.get('/books/edit/:id',isAuthenticated, async (req, res) => {
 router.put('/books/edit-books/:id', isAuthenticated, async (req,res) => 
 {
 	const {title, author, description, price, store} = req.body;
-	if(filename)
+	if(filename!=" ")
 	{
 		filename=req.body;
 	}

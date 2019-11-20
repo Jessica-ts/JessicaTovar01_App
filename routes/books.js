@@ -140,7 +140,22 @@ router.put('/books/edit-books/:id', isAuthenticated, async (req,res) =>
 		const imagebc = req.file.path;
 		const ext = path.extname(req.file.originalname).toLowerCase();
 		const targetPath = path.resolve(`public/uploads/${imgUrl}${ext}`);
-		filename: imgUrl + ext;
+		if(ext === '.png' || ext ==='.jpg' || ext === '.jpeg' || ext === '.gif')
+		{
+		//Rename mueve un archivo de un directorio a otro
+			await fs.rename(imagebc, targetPath);
+			const newBook = new Book({
+			title : req.body.title,
+			author : req.body.author, 
+			description: req.body.description, 
+			price: req.body.price, 
+			store : req.body.store, 
+			filename: imgUrl + ext
+		})
+		newBook.user = req.user.id;
+		await newBook.save();
+		//console.log(newBook);
+		}
 		await Book.findByIdAndUpdate(req.params.id, {title, author, description, price, store, filename});
 	}
 	

@@ -11,7 +11,8 @@ const User = require('../models/User');
 const Comment = require('../models/Comment');
 
 const {isAuthenticated} = require('../helpers/auth');
-
+let bodyParser = require('body-parser');
+let jsonParser = bodyParser.json();
 
 
 router.get('/books/add', isAuthenticated, (req, res) => 
@@ -120,7 +121,7 @@ router.get('/books/edit/:id',isAuthenticated, async (req, res) => {
 	res.render('books/edit-books', {book});
 });
 
-router.put('/books/edit-books/:id', isAuthenticated, async (req,res) => 
+router.put('/books/edit-books/:id', isAuthenticated, jsonParser, async (req,res) => 
 {
 	const {title, author, description, price, store}= req.body;
 	const{filename}= req.file;
